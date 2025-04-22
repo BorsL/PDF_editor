@@ -4,35 +4,70 @@ import { Column } from '@/components/Column';
 import { DndContext, DragEndEvent } from '@dnd-kit/core';
 
 const COLUMNS: ColumnType[] = [
-  { id: 'TODO', title: 'To Do' },
-  { id: 'IN_PROGRESS', title: 'In Progress' },
-  { id: 'DONE', title: 'Done' },
+  { id: 'NOT_USED', title: 'list of items available' },
+  { id: 'USED', title: 'used' },
 ];
 
 const INITIAL_TASKS: Task[] = [
   {
     id: '1',
-    title: 'Research Project',
-    description: 'Gather requirements and create initial documentation',
-    status: 'TODO',
+    title: 'Feature 1',
+    description: '',
+    status: 'USED',
   },
   {
     id: '2',
-    title: 'Design System',
-    description: 'Create component library and design tokens',
-    status: 'TODO',
+    title: 'Feature 2',
+    description: '',
+    status: 'NOT_USED',
   },
   {
     id: '3',
-    title: 'API Integration',
-    description: 'Implement REST API endpoints',
-    status: 'IN_PROGRESS',
+    title: 'Feature 3',
+    description: '',
+    status: 'USED',
   },
   {
     id: '4',
-    title: 'Testing',
-    description: 'Write unit tests for core functionality',
-    status: 'DONE',
+    title: 'Feature 4',
+    description: '',
+    status: 'NOT_USED',
+  },
+  {
+    id: '5',
+    title: 'Feature 5',
+    description: '',
+    status: 'USED',
+  },
+  {
+    id: '6',
+    title: 'Feature 6',
+    description: '',
+    status: 'NOT_USED',
+  },
+  {
+    id: '7',
+    title: 'Feature 7',
+    description: '',
+    status: 'USED',
+  },
+  {
+    id: '8',
+    title: 'Feature 8',
+    description: '',
+    status: 'NOT_USED',
+  },
+  {
+    id: '9',
+    title: 'Feature 9',
+    description: '',
+    status: 'USED',
+  },
+  {
+    id: '10',
+    title: 'Feature 10',
+    description: '',
+    status: 'NOT_USED',
   },
 ];
 
@@ -60,18 +95,16 @@ export default function App() {
   }
 
   return (
-    <div className="p-4">
-      <div className="flex gap-8">
+    <div className="p-6 bg-gray-100 min-h-screen flex items-start justify-center">
+      <div className="flex gap-6 overflow-x-auto w-full max-w-6xl">
         <DndContext onDragEnd={handleDragEnd}>
-          {COLUMNS.map((column) => {
-            return (
-              <Column
-                key={column.id}
-                column={column}
-                tasks={tasks.filter((task) => task.status === column.id)}
-              />
-            );
-          })}
+          {COLUMNS.map((column) => (
+            <Column
+              key={column.id}
+              column={column}
+              tasks={tasks.filter((task) => task.status === column.id)}
+            />
+          ))}
         </DndContext>
       </div>
     </div>
